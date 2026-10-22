@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ku" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تاقیکردنەوەی تیوری نووسینگەی مێرگەسۆر</title>
+<link href="https://fonts.googleapis.com/css2?family=vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/png" href="images/1.png">
+</head>
+<body>
+    <!-- بەشی داواکردنی پاسوورد -->
+    <div id="passwordModal" class="modal-overlay">
+        <div class="modal-box">
+            <h3>تاقیکردنەوەی تیوری نووسینگەی مێرگەسۆر</h3>
+            <p>تکایە ووشەی نهێنی لە خوارەوە بینووسە</p>
+<div style="position: relative; display: inline-block; width: 100%;">
+    <input type="password" id="modalPasswordInput" placeholder="پاسۆورد بنووسە..." style="width: 100%; padding: 12px 45px 12px 15px; box-sizing: border-box; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 16px; outline: none;">
+    
+    <span onclick="togglePassword()" style="cursor: pointer; position: absolute; right: 15px; top: 50%; transform: translateY(-50%); display: flex; align-items: center; color: #64748b;">
+        <!-- چاوی داخراو (برژانگدار) - سەرەتادا دەردەکەوێت -->
+        <svg id="eyeClosed" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+            <line x1="1" y1="1" x2="23" y2="23"></line>
+        </svg>
+        
+        <!-- چاوی کراوە - سەرەتادا شاراوەیە -->
+        <svg id="eyeOpen" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+        </svg>
+    </span>
+</div>
+
+            <button id="modalSubmitBtn">چوونە ژوورەوە</button>
+        </div>
+    </div>
+
+    <div class="main-container">
+    <div id="name-section" class="card">
+   <div class="logo-container">
+            <img src="images/1.png" alt="لۆگۆ ١" class="logo-img">
+            <img src="images/2.png" alt="لۆگۆ ٢" class="logo-img">
+        </div>
+    <h1>تاقیکردنەوەی تیوری نووسینگەی مێرگەسۆر</h1>
+    <h2>تکایە ناوی سیانی خۆت بنووسە</h2>
+    <input type="text" id="driver-name" placeholder="ناوی سیانی..." spellcheck="false">
+    
+    <div style="margin: 15px 0; width: 100%;">
+        <h3 style="font-size: 16px; margin-bottom: 10px;">گرووپی پرسیارەکان هەڵبژێرە:</h3>
+        <div style="display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;">
+            <button class="group-btn" onclick="selectGroup('1', this)" style="padding: 6px 12px; cursor: pointer;">گرووپی A</button>
+            <button class="group-btn" onclick="selectGroup('2', this)" style="padding: 6px 12px; cursor: pointer;">گرووپی B</button>
+            <button class="group-btn" onclick="selectGroup('3', this)" style="padding: 6px 12px; cursor: pointer;">گرووپی C</button>
+            <button class="group-btn" onclick="selectGroup('4', this)" style="padding: 6px 12px; cursor: pointer;">گرووپی D</button>
+        </div>
+    </div>            
+            <button onclick="startQuiz()" style="padding: 15px 30px; font-size: 18px; cursor: pointer; background-color: #007bff; color: white; border: none; border-radius: 8px;">دەستپێکردن</button>
+        </div>
+
+        <!-- بەشی پرسیارەکان -->
+        <div id="quiz-section" class="card hidden">
+            <div id="timer" style="font-size: 22px; font-weight: bold; color: #d9534f; margin-bottom: 15px; text-align: center;">⏱️ کاتی ماوە: 60 چرکە</div>
+            
+            <h3 id="question-text" style="margin-bottom: 20px; font-size: 18px;"></h3>
+            <img id="question-image" src="" alt="وێنەی پرسیار" />
+            
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+                <button id="choice1-btn" onclick="checkAnswer(1)"></button>
+                <button id="choice2-btn" onclick="checkAnswer(2)"></button>
+                <button id="choice3-btn" onclick="checkAnswer(3)"></button>
+            </div>
+        </div>
+
+        <!-- بەشی ئەنجامی کۆتایی تاقیکردنەوەکە -->
+        <div id="result-section" class="card hidden">
+            <h2>ئەنجامی تاقیکردنەوە</h2>
+            <p id="final-score-text" style="font-size: 18px; margin-top: 15px;"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
